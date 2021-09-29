@@ -13,7 +13,7 @@ pipeline{
         }
         stage("CppCheck - Publish"){
             steps{
-                publishCppcheck failureThreshold: '10', healthy: '5', ignoreBlankFiles: true, newFailureThreshold: '5', newThreshold: '10', threshold: '20', unHealthy: '5'
+                publishCppcheck displayErrorSeverity: true, displayNoCategorySeverity: true, displayPerformanceSeverity: true, displayPortabilitySeverity: true, displayStyleSeverity: true, displayWarningSeverity: true, failureThreshold: '10', healthy: '5', ignoreBlankFiles: true, newFailureThreshold: '5', newThreshold: '10', numBuildsInGraph: 10, threshold: '20', unHealthy: '5'
                 echo "teste"
             }
         }
