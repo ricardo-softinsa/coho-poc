@@ -1,0 +1,39 @@
+pipeline{
+    agent{
+        label 'incm-agent'
+    }
+    environment{
+        PROJETO_WORKDIR="/opt/uniqode/Projeto"
+        gitlab_creds=credentials('incm-gitlab')
+    }
+    stages{
+        stage('Checkout'){
+            steps{
+                sh "pwd"
+                touch "checkout-repos.sh"
+                sh "ls"
+                sh """
+                    echo "
+                        #!/bin/bash
+                        
+                        cd ${PROJETO_WORKDIR}/lab_ext
+                        echo \"${gitlab_creds_PSW}\" | git clone https://${gitlab_creds_USR}@gitlab.incm.int/dsi/cicd_project/external/external.git .
+                    " >> checkout-repos.sh
+                """
+                echo "It gets here"
+                sh "chmod 777 checkout-repos.sh"
+                sh "./checkout-repos.sh"
+            }
+        }
+        stage('SonarQube - Analysis'){
+            steps{
+                echo "To be implemented..."
+            }
+        }
+        stage('SonarQube - Quality Gates'){
+            steps{
+                echo "To be implemented..."
+            }
+        }
+    }
+}
