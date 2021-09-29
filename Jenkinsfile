@@ -13,7 +13,7 @@ pipeline{
         }
         stage("CppCheck - Publish"){
             steps{
-                publishCppcheck failureThreshold: '10', healthy: '5', ignoreBlankFiles: true, newFailureThreshold: '5', newThreshold: '10', pattern: '/home/jenkins/workspace/incm-poc/*', threshold: '20', unHealthy: '5'
+                publishCppcheck failureThreshold: '10', healthy: '5', ignoreBlankFiles: true, newFailureThreshold: '5', newThreshold: '10', pattern: '/home/jenkins/workspace/incm-poc/cppcheck.xml', threshold: '20', unHealthy: '5'
             }
         }
     }
