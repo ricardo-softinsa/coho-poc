@@ -1,6 +1,6 @@
 pipeline{
     agent{
-        label 'incm-agemt'
+        label 'incm-agent'
     }
     stages{
         stage('Checkout'){
